@@ -39,7 +39,7 @@ function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:4002/login", {
+            const response = await axios.post("http://147.93.96.202/4002/login", {
                 email,
                 password,
             });

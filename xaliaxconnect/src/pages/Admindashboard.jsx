@@ -40,7 +40,7 @@ function Admindashboard() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:4002/userlist")
+    axios.get("http://147.93.96.202:4002/userlist")
         .then(response => {
             const userMap = response.data.reduce((acc, user) => {
                 acc[user.email] = user; // Map by email for quick lookup
@@ -54,7 +54,7 @@ function Admindashboard() {
 
   useEffect(() => {
     if (user.email) { // Ensure email exists before making the request
-      axios.get(`http://localhost:4002/user/${user.email}`)
+      axios.get(`http://147.93.96.202:4002/user/${user.email}`)
         .then((response) => {
           if (response.data.success) {
             setUserData(response.data.user);
@@ -69,7 +69,7 @@ function Admindashboard() {
 
   const fetchPostsa = async () => {
     try {
-        const response = await axios.get("http://localhost:4002/postscontent");
+        const response = await axios.get("http://147.93.96.202:4002/postscontent");
         if (response.data.success) {
             setPosts(response.data.posts);
         }
@@ -85,7 +85,7 @@ useEffect(() => {
 
 
   useEffect(() => {
-      axios.get("http://localhost:4002/getpostdetails") 
+      axios.get("http://147.93.96.202:4002/getpostdetails") 
           .then((response) => {
               if (response.data.success) {
                   const userMap = {}; 
@@ -110,7 +110,7 @@ useEffect(() => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:4002/postscontent");
+      const response = await axios.get("http://147.93.96.202:4002/postscontent");
       setPosts(response.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -120,7 +120,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchPosts = async () => {
         try {
-            const response = await axios.get("http://localhost:4002/getpostdetails");
+            const response = await axios.get("http://147.93.96.202:4002/getpostdetails");
             console.log("Fetched Posts:", response.data);
             setPosts(response.data);
             toast.success("Posts fetched successfully!");  // ✅ Toast message
@@ -135,7 +135,7 @@ useEffect(() => {
   
 const fetchPostslist = async () => {
   try {
-      const response = await axios.get("http://localhost:4002/getpostdetails");
+      const response = await axios.get("http://147.93.96.202:4002/getpostdetails");
       console.log("Fetched Posts:", response.data);
       setPosts(response.data);
       toast.success("Posts fetched successfully!");  // ✅ Toast message
@@ -187,14 +187,14 @@ const fetchPostslist = async () => {
         formData.append("image", image);
     
         try {
-          const response = await fetch("http://localhost:4002/upload", {
+          const response = await fetch("http://147.93.96.202:4002/upload", {
             method: "POST",
             body: formData,
           });
     
           const data = await response.json();
           if (data.success) {
-            const newImagePath = `http://localhost:4002/uploads/${data.filename}`;
+            const newImagePath = `http://147.93.96.202:4002/uploads/${data.filename}`;
         
             // Update user profile with the new image
             await updateUserProfile(newImagePath);
@@ -216,7 +216,7 @@ const fetchPostslist = async () => {
       // Update user profile in the database
       const updateUserProfile = async (newImagePath) => {
         try {
-          const response = await fetch(`http://localhost:4002/update-profile/${user.email}`, {
+          const response = await fetch(`http://147.93.96.202:4002/update-profile/${user.email}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, profileImage: newImagePath }),
@@ -261,14 +261,14 @@ const fetchPostslist = async () => {
           formData.append("image", postimage);
       
           try {
-              const response = await axios.post("http://localhost:4002/upload", formData, {
+              const response = await axios.post("http://147.93.96.202:4002/upload", formData, {
                   headers: { "Content-Type": "multipart/form-data" },
               });
       
               console.log("Image Upload Response:", response.data); // Debugging
       
               if (response.data.success) {
-                  uploadedImagePath = `http://localhost:4002/uploads/${response.data.filename}`;
+                  uploadedImagePath = `http://147.93.96.202:4002/uploads/${response.data.filename}`;
                //   alert("Image uploaded successfully!");
               } else {
                   alert("Image upload failed");
@@ -297,7 +297,7 @@ const fetchPostslist = async () => {
         };
     
         try {
-            const response = await axios.post("http://localhost:4002/postscontent", postData, {
+            const response = await axios.post("http://147.93.96.202:4002/postscontent", postData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -350,12 +350,12 @@ const fetchPostslist = async () => {
                     <div className="col-md-2" style={{padding:'10px'}}>
                         <div style={{textAlign:'center',  borderRight:'2px solid #f4f4f4'}}>
                     <img 
-    src={user.profileImage ? user.profileImage : "http://localhost:4002/uploads/profile.jpg"} 
+    src={user.profileImage ? user.profileImage : "http://147.93.96.202:4002/uploads/profile.jpg"} 
     alt="Profile" 
     height="80px"  
     width="80px" 
     className="profileimg"
-    onError={(e) => e.target.src = "http://localhost:4002/uploads/profile.jpg"} // Fallback if image fails to load
+    onError={(e) => e.target.src = "http://147.93.96.202:4002/uploads/profile.jpg"} // Fallback if image fails to load
   />
                         <div>
       {showPreview  && preview && <img src={preview} alt="Preview" width="200px" />}
@@ -424,14 +424,14 @@ const fetchPostslist = async () => {
         <div className="row">
           <div className="col-md-2">
           <img style={{borderRadius:'10px'}}
-    src={user.profileImage ? user.profileImage : "http://localhost:4002/uploads/profile.jpg"} 
+    src={user.profileImage ? user.profileImage : "http://147.93.96.202:4002/uploads/profile.jpg"} 
     alt="Profile" 
     height="80px"  
     width="80px" 
      roundedCircle
               className="me-3 rounded"
    
-    onError={(e) => e.target.src = "http://localhost:4002/uploads/profile.jpg"} // Fallback if image fails to load
+    onError={(e) => e.target.src = "http://147.93.96.202:4002/uploads/profile.jpg"} // Fallback if image fails to load
  />
           </div>
           <div className="col-md-10">
@@ -552,6 +552,9 @@ const fetchPostslist = async () => {
                                             />
                                         </div>
                                     )}
+                                    <div className="col-md-12">
+
+                                      </div>
                                 </div>
                             </div>
                         </div>
