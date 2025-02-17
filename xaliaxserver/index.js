@@ -9,6 +9,9 @@ const cors = require('cors')
 const multer = require("multer");
 const path = require("path");
 
+//session
+const session = require("express-session")
+
 const mongoose = require('mongoose')
 const connectDB = require('./db.js')
 const User = require('./models/user.js')

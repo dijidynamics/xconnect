@@ -347,13 +347,12 @@ const fetchPostslist = async () => {
                     <div className='bg-color'>
                     <div className="row" style={{padding:'10px'}}>
                       
-                    <div className="col-md-2" style={{padding:'10px'}}>
+                    <div className="col-md-2 col-2" style={{padding:'10px'}}>
                         <div style={{textAlign:'center',  borderRight:'2px solid #f4f4f4'}}>
                     <img 
     src={user.profileImage ? user.profileImage : "http://147.93.96.202:4002/uploads/profile.jpg"} 
     alt="Profile" 
-    height="80px"  
-    width="80px" 
+    
     className="profileimg"
     onError={(e) => e.target.src = "http://147.93.96.202:4002/uploads/profile.jpg"} // Fallback if image fails to load
   />
@@ -372,7 +371,7 @@ const fetchPostslist = async () => {
     </div>
     </div>
                         </div>
-                      <div className="col-md-10">
+                      <div className="col-md-10 col-10">
                         <div>
                 {user ? (
                   <div>
@@ -389,16 +388,16 @@ const fetchPostslist = async () => {
             </div>
             <div>
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-3">
                         <span><span style={{fontWeight:'bold'}}>10 </span>Posts</span>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-3">
                         <span><span style={{fontWeight:'bold'}}>20 </span>Media</span>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-3">
                         <span><span style={{fontWeight:'bold'}}>15 </span>Following</span>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-3">
                         <span><span style={{fontWeight:'bold'}}>5 </span>Private</span>
                     </div>
                 </div>
@@ -422,7 +421,7 @@ const fetchPostslist = async () => {
        
         {/* Profile Image */}
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-2 col-4">
           <img style={{borderRadius:'10px'}}
     src={user.profileImage ? user.profileImage : "http://147.93.96.202:4002/uploads/profile.jpg"} 
     alt="Profile" 
@@ -434,7 +433,7 @@ const fetchPostslist = async () => {
     onError={(e) => e.target.src = "http://147.93.96.202:4002/uploads/profile.jpg"} // Fallback if image fails to load
  />
           </div>
-          <div className="col-md-10">
+          <div className="col-md-10 col-10">
             <div  style={{border:'1px solid #dee2e6', paddingLeft:'5px', paddingRight:'5px', paddingTop:'5px', paddingBottom:'10px'}}>
             <div>
           <textarea rows={4} placeholder="What's happening?" className="form-control w-100" onChange={handlechange} value={postcontent}/>
@@ -524,7 +523,7 @@ const fetchPostslist = async () => {
                 return (
                     <div className="col-md-12" key={index}>
                         <div className="row">
-                            <div className="col-md-1">
+                            <div className="col-md-1 col-3">
                                 <img 
                                     style={{ width: '100%' }} 
                                     src={postUser?.profileImage || "https://via.placeholder.com/50"}   
@@ -532,7 +531,7 @@ const fetchPostslist = async () => {
                                     className="img-fluid rounded-circle"
                                 />
                             </div>
-                            <div className="col-md-11">
+                            <div className="col-md-11 col-9">
                                 <strong>{postUser?.username || "Unknown User"}</strong>
                                 <strong 
                                     style={{ color: '#6c757d', fontWeight: 'normal', fontSize: '12px' }}>
